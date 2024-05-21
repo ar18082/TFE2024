@@ -2,21 +2,34 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function index(Request $request)
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function index()
     {
         /*$user = new User([
-             'name' => 'ariz',
-             'email' => 'ariz@esi-informatique.com',
-             'password' => bcrypt('I8VT6tCjQwXuJHTiHarB'), // Assurez-vous de crypter le mot de passe
-         ]);
-         $user->save();*/
-
-
-
+           'name' => 'ariz',
+           'email' => 'antonino.rizzo@isl-edu.be',
+           'password' => bcrypt('I8VT6tCjQwXuJHTiHarB'), // Assurez-vous de crypter le mot de passe
+       ]);
+       $user->save();*/
         return view('home.index');
     }
 }

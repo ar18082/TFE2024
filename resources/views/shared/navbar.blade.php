@@ -114,9 +114,9 @@
                     <ul class="dropdown-menu dropdown-menu-end">
                         <li><a class="dropdown-item" href="">Profil</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><form method="POST" action="">
+                        <li><form method="POST" action="{{ route('logout') }}">
                                 @csrf
-                                <a href="}" class="dropdown-item" onclick="event.preventDefault(); this.closest('form').submit();">Se déconnecter</a>
+                                <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault(); this.closest('form').submit();">Se déconnecter</a>
                             </form>
                         </li>
                     </ul>
