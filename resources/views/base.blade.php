@@ -23,7 +23,7 @@
     <link href="/css/fontawesome-pro-6.5.1-web/css/all.css" rel="stylesheet">
 
 </head>
-<body class="bg-primary-subtle">
+<body class="body-bg">
 
 <header>
 
