@@ -34,22 +34,22 @@
 
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="{{ asset('img/langues/drap_BEL.jpg') }}" alt="INeedABabyssiter" height="100" width="106"/>
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                            Langue
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href=""><img src="{{ asset('img/langues/drap_EN.jpg') }}" alt="INeedABabyssiter" height="100" width="106"/></a></li>
-                            <li><a class="dropdown-item" href=""><img src="{{ asset('img/langues/drap_FR.jpg') }}" alt="INeedABabyssiter" height="100" width="106"/></a></li>
-
+                            <li><a class="dropdown-item" href="">Français   <img src="{{asset('img/langues/drap_FR.jpg')}}" alt="drapFR" width="30px" height="30px"></a></li>
+                            <li><a class="dropdown-item" href="">Anglais    <img src="{{asset('img/langues/drap_EN.jpg')}}" alt="drapEN" width="40px" height="30px"></a></li>
 
                         </ul>
+
                     </li>
 
             </ul>
             <div>
                 <div class="nav-item dropdown">
                     <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Ariz
+                        <i class="fas fa-user"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end">
                         <li><a class="dropdown-item" href="">Profil</a></li>

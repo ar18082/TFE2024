@@ -19,8 +19,19 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'firstname',
         'email',
         'password',
+        'phoneNumber',
+        'adressStreet',
+        'adressNumber',
+        'roleAdmin',
+        'roleSuperAdmin',
+        'roleParent',
+        'roleBabySitter',
+        'unsucessefulAttempt',
+        'banned',
+        'inscriptConf'
     ];
 
     /**
@@ -42,4 +53,39 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function geographic_coodinates()
+    {
+        return $this->hasOne(Geographic_coodinate::class);
+    }
+
+    public function postalCode_Localite()
+    {
+        return $this->hasOne(PostalCode_Localite::class);
+    }
+
+    public function parentUser()
+    {
+        return $this->hasOne(ParentUser::class);
+    }
+
+    public function babySitterUser()
+    {
+        return $this->hasOne(BabySitterUser::class);
+    }
+
+    public function goodPlan()
+    {
+        return $this->hasMany(GoodPlan::class);
+    }
+
+    public function question()
+    {
+        return $this->hasMany(Question::class);
+    }
+
+    public function response()
+    {
+        return $this->hasMany(Response::class);
+    }
 }

@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomeController::class, 'index'])->middleware(['auth', 'verified'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 
 
