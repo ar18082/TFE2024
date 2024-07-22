@@ -88,4 +88,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Response::class);
     }
+
+    public function image()
+    {
+        return $this->hasMany(Image::class);
+    }
 }

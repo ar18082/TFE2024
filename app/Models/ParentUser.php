@@ -14,4 +14,21 @@ class ParentUser extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function favorites()
+    {
+        return $this->hasMany(Favorites::class);
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function activity()
+    {
+        return $this->hasMany(Activity_parent::class);
+    }
+
+
 }
