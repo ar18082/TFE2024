@@ -29,4 +29,14 @@ export default {
         './resources/views/filament/**/*.blade.php',
         './vendor/filament/**/*.blade.php',
     ],
+
 }
+
+// tailwind.config.js
+module.exports = {
+    // other configurations...
+    plugins: [
+        require('@tailwindcss/typography'),
+        // other plugins...
+    ],
+};
