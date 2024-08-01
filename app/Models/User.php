@@ -56,6 +56,16 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+    public function getRoleAttribute($value)
+    {
+        return json_decode($value, true);
+    }
+
+    public function setRoleAttribute($value)
+    {
+        $this->attributes['role'] = json_encode($value);
+    }
+
     public function geographic_coodinates()
     {
         return $this->hasOne(Geographic_coodinate::class);
