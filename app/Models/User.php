@@ -83,7 +83,7 @@ class User extends Authenticatable
 
     public function babySitterUser()
     {
-        return $this->belongsTo(BabySitterUser::class);
+        return $this->belongsTo(BabysitterUser::class);
     }
 
     public function goodPlan()
