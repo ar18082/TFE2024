@@ -4,6 +4,7 @@
 
 @section('content')
     <h1>coucou</h1>
+    {{auth()->user() ? auth()->user()->name : 'not connected'}}
 {{--    @livewire('create-activity')--}}
 {{--    @foreach($users as $user)--}}
 {{--        <div class="card" style="width: 18rem;">--}}

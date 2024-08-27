@@ -30,5 +30,10 @@ class ParentUser extends Model
         return $this->hasMany(Activity_parent::class);
     }
 
+    public function children()
+    {
+        return $this->hasMany(Children::class);
+    }
+
 
 }

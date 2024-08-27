@@ -9,6 +9,8 @@ use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Contracts\Auth\MustVerifyEmail as MustVerifyEmailContract;
 use Illuminate\Auth\MustVerifyEmail;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Auth\Notifications\VerifyEmail as VerifyEmailNotification;
 
 class User extends Authenticatable implements MustVerifyEmailContract
 {
@@ -28,13 +30,10 @@ class User extends Authenticatable implements MustVerifyEmailContract
         'phoneNumber',
         'adressStreet',
         'adressNumber',
-        'roleAdmin',
-        'roleSuperAdmin',
-        'roleParent',
-        'roleBabySitter',
         'unsucessefulAttempt',
         'banned',
-        'inscriptConf'
+        'inscriptConf',
+        'postal_code_localite_id',
     ];
 
     /**
@@ -72,9 +71,9 @@ class User extends Authenticatable implements MustVerifyEmailContract
         return $this->hasOne(Geographic_coodinate::class);
     }
 
-    public function postalCode_Localite()
+    public function postal_code_localite()
     {
-        return $this->hasOne(PostalCode_Localite::class);
+        return $this->belongsTo(PostalCode_Localite::class);
     }
 
     public function parentUser()
@@ -105,5 +104,16 @@ class User extends Authenticatable implements MustVerifyEmailContract
     public function image()
     {
         return $this->hasMany(Image::class);
+    }
+
+    public function sendEmailVerificationNotification()
+    {
+        $verificationUrl = URL::temporarySignedRoute(
+            'verification.verify',
+            now()->addMinutes(60),
+            ['id' => $this->id, 'hash' => sha1($this->email)]
+        );
+
+        $this->notify(new VerifyEmailNotification($verificationUrl));
     }
 }
