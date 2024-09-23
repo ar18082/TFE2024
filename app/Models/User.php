@@ -73,7 +73,7 @@ class User extends Authenticatable implements MustVerifyEmailContract
 
     public function postal_code_localite()
     {
-        return $this->belongsTo(PostalCode_Localite::class);
+        return $this->belongsTo(PostalCode_Localite::class,  'postal_code_localite_id');
     }
 
     public function parentUser()
@@ -83,7 +83,7 @@ class User extends Authenticatable implements MustVerifyEmailContract
 
     public function babySitterUser()
     {
-        return $this->belongsTo(BabysitterUser::class);
+        return $this->belongsTo(BabysitterUser::class, 'babysitter_user_id');
     }
 
     public function goodPlan()

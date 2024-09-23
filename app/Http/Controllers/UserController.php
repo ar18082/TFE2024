@@ -15,4 +15,12 @@ class UserController extends Controller
 //        dd($user);
         return view('user.index' , compact('user'));
     }
+
+    public function destroy($id)
+    {
+
+        $user = User::find($id);
+        $user->delete();
+        return redirect()->route('home')->with('error', 'l\'Email de confirmation a expiré votre compte a été supprimé');
+    }
 }

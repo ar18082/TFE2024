@@ -1,0 +1,23 @@
+body{
+    margin:0;
+}
+.box-rebours{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.box_heure, .box_minute, .box_seconde {
+    padding: 10px;
+}
+#heure, #minute, #seconde {
+    background:black;
+    padding: 10px 20px;
+    color: white;
+    font-size: 3rem;
+    font-weight: bold;
+}
+#heure_label, #minute_label, #seconde_label {
+    font-size: 1.5rem;
+}

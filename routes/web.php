@@ -1,9 +1,12 @@
 <?php
 
+use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\AjaxController;
+use App\Http\Controllers\GoodPlanController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InscriptionController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SelectController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;;
@@ -35,8 +38,9 @@ Route::post('/email/resend', function (Request $request) {
     return back()->with('message', 'Verification link sent!');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.resend');
 
-Route::get('/inscription', [InscriptionController::class, 'index'])->name( 'inscription');
-Route::get('/inscription/attenteConfirmation', [InscriptionController::class, 'attenteConfirmation'])->name('attenteConfirmation');
+Route::get('/inscription/{user}', [InscriptionController::class, 'index'])->name( 'inscription');
+Route::get('/inscription/attenteConfirmation/{id}', [InscriptionController::class, 'attenteConfirmation'])->name('attenteConfirmation');
+Route::post('/inscription/store', [InscriptionController::class, 'store'])->name('inscription.store');
 
 
 Route::prefix('/ajax')->name('ajax.')->group(function () {
@@ -44,17 +48,24 @@ Route::prefix('/ajax')->name('ajax.')->group(function () {
     Route::get('/inscription/form/parent', [AjaxController::class, 'formInscriptionParent'])->name('inscription.form.parent');
     Route::get('/inscription/form/babysitter', [AjaxController::class, 'formInscriptionBabysitter'])->name('inscription.form.babysitter');
     Route::get('/inscription/form/children/{name}', [AjaxController::class, 'formInscriptionChildren'])->name('inscription.form.children');
+    Route::get('/inscription/aborded/{id}', [UserController::class, 'destroy'])->name('inscription.destroy');
 });
 
 
 Route::prefix('/select')->name('select.')->group(function () {
-    Route::get('/searchByCPOrLocalite', [SelectController::class, 'searchByCPOrLocalite'])->name('searchByCPOrLocalite');
+    Route::get('/ByCPOrLocalite', [SelectController::class, 'ByCPOrLocalite'])->name('ByCPOrLocalite');
+    Route::get('/ByBabysitterName', [SelectController::class, 'ByBabysitterName'])->name('ByBabysitterName');
 });
+
+Route::get('/searchForm', [SearchController::class, 'searchForm'])->name('searchForm');
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/reception', [HomeController::class, 'reception'])->name('reception');
-
 Route::get('/user', [UserController::class, 'index'])->name('user.index');
+
+Route::resource('goodPlan', GoodPlanController::class);
+Route::resource('activity', ActivityController::class);
+Route::post('/activityInscription', [ActivityController::class, 'activityParent'])->name('activity.inscription');
 
 
 

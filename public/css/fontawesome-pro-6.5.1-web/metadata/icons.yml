@@ -12957,7 +12957,7 @@ building-magnifying-glass:
       - inspect
       - inspection
       - permit
-      - search
+      - goodPlan
       - zoning
   styles:
     - solid
@@ -39327,7 +39327,7 @@ file-lock:
 file-magnifying-glass:
   aliases:
     names:
-      - file-search
+      - file-goodPlan
     unicodes:
       secondary:
         - 10f865
@@ -42114,7 +42114,7 @@ folder-image:
 folder-magnifying-glass:
   aliases:
     names:
-      - folder-search
+      - folder-goodPlan
   changes:
     - 6.0.0-beta1
     - 6.0.0-beta2
@@ -42127,7 +42127,7 @@ folder-magnifying-glass:
     terms:
       - file
       - magnifier
-      - search
+      - goodPlan
   styles:
     - solid
     - regular
@@ -42297,7 +42297,7 @@ folder-tree:
       - directory
       - document
       - file
-      - search
+      - goodPlan
       - structure
   styles:
     - solid
@@ -44829,7 +44829,7 @@ globe-pointer:
       - ' World Wide Web'
       - ' find'
       - ' globe'
-      - ' search'
+      - ' goodPlan'
       - ' www'
       - cyberspace
       - internet
@@ -54693,7 +54693,7 @@ landmark-magnifying-glass:
       - building
       - preservation
       - preserve
-      - search
+      - goodPlan
       - society
   styles:
     - solid
@@ -57942,7 +57942,7 @@ magnet:
 magnifying-glass:
   aliases:
     names:
-      - search
+      - goodPlan
     unicodes:
       composite:
         - 1f50d
@@ -57970,7 +57970,7 @@ magnifying-glass:
       - magnifying
       - magnifying glass tilted left
       - preview
-      - search
+      - goodPlan
       - tool
       - zoom
   styles:
@@ -57994,7 +57994,7 @@ magnifying-glass-arrow-right:
       - find
       - magnifier
       - next
-      - search
+      - goodPlan
   styles:
     - solid
     - regular
@@ -58017,7 +58017,7 @@ magnifying-glass-arrows-rotate:
       - '  magnifying'
       - '  magnifying glass tilted left'
       - '  preview'
-      - '  search'
+      - '  goodPlan'
       - '  tool'
       - ' exchange'
       - ' modify'
@@ -58067,7 +58067,7 @@ magnifying-glass-chart:
 magnifying-glass-dollar:
   aliases:
     names:
-      - search-dollar
+      - goodPlan-dollar
     unicodes:
       secondary:
         - 10f688
@@ -58100,7 +58100,7 @@ magnifying-glass-dollar:
 magnifying-glass-location:
   aliases:
     names:
-      - search-location
+      - goodPlan-location
     unicodes:
       secondary:
         - 10f689
@@ -58132,7 +58132,7 @@ magnifying-glass-location:
 magnifying-glass-minus:
   aliases:
     names:
-      - search-minus
+      - goodPlan-minus
     unicodes:
       secondary:
         - 10f010
@@ -58176,7 +58176,7 @@ magnifying-glass-music:
       - ' magnifying'
       - ' magnifying glass tilted left'
       - ' preview'
-      - ' search'
+      - ' goodPlan'
       - ' tool'
       - ' zoom'
       - audio
@@ -58206,7 +58206,7 @@ magnifying-glass-play:
       - '  magnifying'
       - '  magnifying glass tilted left'
       - '  preview'
-      - '  search'
+      - '  goodPlan'
       - '  tool'
       - ' zoom'
       - audio
@@ -58225,7 +58225,7 @@ magnifying-glass-play:
 magnifying-glass-plus:
   aliases:
     names:
-      - search-plus
+      - goodPlan-plus
     unicodes:
       secondary:
         - 10f00e
@@ -58269,7 +58269,7 @@ magnifying-glass-waveform:
       - '  magnifying'
       - '  magnifying glass tilted left'
       - '  preview'
-      - '  search'
+      - '  goodPlan'
       - '  tool'
       - ' zoom'
       - audio
@@ -62971,7 +62971,7 @@ music-magnifying-glass:
       - ' magnify'
       - ' magnifying'
       - ' magnifying glass tilted left'
-      - ' search'
+      - ' goodPlan'
       - ' tool'
       - ' zoom'
       - artist
@@ -63423,7 +63423,7 @@ nfc-magnifying-glass:
       - near field communication
       - nfc
       - scan
-      - search
+      - goodPlan
       - signal
       - transfer
       - wireless
@@ -71759,7 +71759,7 @@ print:
 print-magnifying-glass:
   aliases:
     names:
-      - print-search
+      - print-goodPlan
     unicodes:
       secondary:
         - 10f81a
@@ -71781,7 +71781,7 @@ print-magnifying-glass:
       - magnifier
       - office
       - paper
-      - search
+      - goodPlan
   styles:
     - solid
     - regular
@@ -72493,7 +72493,7 @@ radar:
       - lidar
       - radio
       - scan
-      - search
+      - goodPlan
       - sonar
       - space
   styles:
@@ -88270,7 +88270,7 @@ telescope:
       - observatory
       - science
       - scope
-      - search
+      - goodPlan
       - space
       - telescope
       - tool
@@ -95605,7 +95605,7 @@ user-magnifying-glass:
       - find
       - person
       - review
-      - search
+      - goodPlan
       - silhouette
       - user
   styles:

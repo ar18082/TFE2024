@@ -33,4 +33,11 @@ class Activity extends Model
     {
         Activity::create($this->form->getState());
     }
+
+    public function activity_parent()
+    {
+        return $this->hasMany(Activity_parent::class);
+    }
+
+
 }

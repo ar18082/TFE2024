@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\PostalCode_Localite;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class SelectController extends Controller
 {
-    public function searchByCPOrLocalite(Request $request)
+    public function ByCPOrLocalite(Request $request)
     {
         $data = [];
 
@@ -29,6 +30,20 @@ class SelectController extends Controller
         //$data = CodePostelb::all();
 
 
+        return response()->json($data);
+
+    }
+
+    public function ByBabysitterName(Request $request)
+    {
+        $data = [];
+        if($request->has('q')){
+            $search = $request->q;
+            $data = User::where('name', 'LIKE', "%$search%")
+//                      ->where('role', 'babysitter')
+                        ->where('babysitter_user_id' , '!=', null)
+                        ->get();
+        }
         return response()->json($data);
 
     }

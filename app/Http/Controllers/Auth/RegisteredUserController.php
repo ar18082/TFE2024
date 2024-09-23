@@ -42,12 +42,17 @@ class RegisteredUserController extends Controller
             'firstname' => $request->firstName,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'created_at' => now(),
+            'updated_at' => now(),
+
         ]);
 
         event(new Registered($user));
 
-//        Auth::login($user);
 
-        return redirect()->route('attenteConfirmation');
+
+        Auth::login($user);
+
+        return redirect()->route('home');
     }
 }

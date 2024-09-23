@@ -19,12 +19,8 @@ class HomeController extends Controller
 
     public function index()
     {
-          $users = User::with('image', 'parentUser', 'babySitterUser', 'goodPlan' )->get();
 
-
-
-
-        return view('home.index', compact('users'));
+        return view('home.index');
     }
 
 //    public function reception(Request $request)

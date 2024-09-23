@@ -15,9 +15,10 @@
                     <div class="progress-bar colorFour w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
             </div>
+            <input type="hidden" name="user_id" value="{{$user->id}}">
             <div class="col-md-2"></div>
             <div class="col-md-12 row mt-4 mb-4" id="btnRoles">
-                <h3 class="mb-4">Firstname name vous êtes ?</h3>
+                <h3 class="mb-4">{{$user->firstname}} {{$user->name}} vous êtes ?</h3>
                 <div class="col-md-2"></div>
                 <div class="col-md-3">
                     <button class="btn thirdColor btn-lg" id="btnBabysitter">Babysitter</button>

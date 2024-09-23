@@ -14,10 +14,10 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href=""> Home      </a></li>
-                        <li><a class="dropdown-item" href=""> Activités </a></li>
-                        <li><a class="dropdown-item" href=""> Bon plan  </a></li>
-                        <li><a class="dropdown-item" href=""> Forum     </a></li>
-                        <li><a class="dropdown-item" href=""> A propos  </a></li>
+                        <li><a class="dropdown-item" href="{{route('activity.index')}}"> Activités </a></li>
+                        <li><a class="dropdown-item" href="{{route('goodPlan.index')}}"> Bon plan  </a></li>
+                        <li><a class="dropdown-item" href=""> Forum</a></li>
+                        <li><a class="dropdown-item" href=""> A propos</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown btn thirdColor m-2 ">
@@ -33,7 +33,7 @@
             <div>
                 <div class="nav-item dropdown">
                     <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        @if(Auth::user())
+                        @if(Auth::user() and Auth::user()->email_verified_at != null)
 
                         <img src="{{asset('storage/images/'.Auth::user()->id.'.jpg')}}">
                         @else
@@ -42,7 +42,7 @@
 
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end">
-                        @if(Auth::user())
+                        @if(Auth::user() and Auth::user()->email_verified_at != null  )
                         <li><a class="dropdown-item" href="">Profil</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><form method="POST" action="{{ route('logout') }}">
