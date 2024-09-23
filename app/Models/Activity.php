@@ -23,4 +23,21 @@ class Activity extends Model
     {
         return $this->belongsTo(BabysitterUser::class);
     }
+
+    public function mount(Activity $activity): void
+    {
+        $this->form->fill($activity->toArray());
+    }
+
+    public function create(): void
+    {
+        Activity::create($this->form->getState());
+    }
+
+    public function activity_parent()
+    {
+        return $this->hasMany(Activity_parent::class);
+    }
+
+
 }

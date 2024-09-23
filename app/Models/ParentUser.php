@@ -12,7 +12,7 @@ class ParentUser extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->hasOne(User::class);
     }
 
     public function favorites()
@@ -28,6 +28,11 @@ class ParentUser extends Model
     public function activity()
     {
         return $this->hasMany(Activity_parent::class);
+    }
+
+    public function children()
+    {
+        return $this->hasMany(Children::class);
     }
 
 
