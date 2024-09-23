@@ -22,6 +22,7 @@ class VerifyEmailController extends Controller
         if ($request->user()->markEmailAsVerified()) {
 
             event(new Verified($request->user()));
+            $request->user()->update(['inscriptConf' => true]);
         }
 
         return redirect()->intended(RouteServiceProvider::HOME.'?verified=1');

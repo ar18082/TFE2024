@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\BabysitterCustody;
 use App\Models\BabysitterUser;
 use App\Models\Children;
@@ -12,17 +13,23 @@ use App\Models\User;
 use Illuminate\Http\Request;
 
 
+
+use Illuminate\Http\Request;
+
+
 class InscriptionController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+
     public function index(Request $request, $user)
     {
 
         $user = User::find($user)->first();
 
         return view('inscription.index', compact('user') );
+
     }
 
     /**
@@ -38,6 +45,7 @@ class InscriptionController extends Controller
      */
     public function store(Request $request)
     {
+
         //dd($request->all());
 
       $request->validate([
@@ -140,6 +148,11 @@ class InscriptionController extends Controller
 //
 //        return redirect()->route('home')->with('success', 'Votre inscription est confirmée');
 //    }
+
+
+        //
+    }
+
 
     /**
      * Display the specified resource.

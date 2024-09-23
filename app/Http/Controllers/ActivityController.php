@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\Activity;
 use App\Models\Activity_parent;
 use Illuminate\Http\Request;
@@ -13,11 +14,13 @@ class ActivityController extends Controller
      */
     public function index()
     {
+
         $activities = Activity::with('activity_parent')->get();
         $nbr = 0;
 
 
         return view('activity.index', compact('activities', 'nbr'));
+
     }
 
     /**
@@ -25,9 +28,11 @@ class ActivityController extends Controller
      */
     public function create()
     {
+
         $activity = new Activity();
 
         return view('activity.form', compact('activity'));
+
     }
 
     /**
@@ -35,6 +40,7 @@ class ActivityController extends Controller
      */
     public function store(Request $request)
     {
+
         $validatedData = $request->validate([
             'title' => 'required',
             'description' => 'required',
@@ -59,6 +65,7 @@ class ActivityController extends Controller
         $activity->save();
 
         return redirect()->route('activity.index')->with('success', 'Activity created successfully.');
+
     }
 
     /**
@@ -74,10 +81,12 @@ class ActivityController extends Controller
      */
     public function edit(string $id)
     {
+
         $activity = Activity::find($id);
 
 
         return view('activity.form', compact('activity'));
+
     }
 
     /**
@@ -85,6 +94,7 @@ class ActivityController extends Controller
      */
     public function update(Request $request, string $id)
     {
+
         $validatedData = $request->validate([
             'title' => 'required',
             'description' => 'required',
@@ -117,6 +127,7 @@ class ActivityController extends Controller
      */
     public function destroy(string $id)
     {
+
         $activity = Activity::find($id);
         $activity->delete();
 
@@ -148,13 +159,7 @@ class ActivityController extends Controller
             return redirect()->route('activity.index')->with('error', 'pas suffisament de place. Il reste '.$activity->nbr_children - $nbr_children.' places.');
         }
 
-
-
-
-
-
     }
 
 
 
-}

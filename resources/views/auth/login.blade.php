@@ -35,7 +35,9 @@
                 {{ __('Log in') }}
             </x-primary-button>
 
+
             <a href="{{route('home')}}" class="btn thirdColor">Retour à l'accueil</a>
+
         </div>
     </form>
 </x-guest-layout>
