@@ -6,6 +6,8 @@ use App\Http\Controllers\GoodPlanController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InscriptionController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\QuestionForumController;
+use App\Http\Controllers\ResponseForumController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SelectController;
 use App\Http\Controllers\UserController;
@@ -66,7 +68,8 @@ Route::get('/user', [UserController::class, 'index'])->name('user.index');
 Route::resource('goodPlan', GoodPlanController::class);
 Route::resource('activity', ActivityController::class);
 Route::post('/activityInscription', [ActivityController::class, 'activityParent'])->name('activity.inscription');
-
+Route::resource('forum', QuestionForumController::class);
+Route::post('forum/{question}/response', [ResponseForumController::class, 'store'])->name('response.store');
 
 
 

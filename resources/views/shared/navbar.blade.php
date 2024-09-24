@@ -16,7 +16,7 @@
                         <li><a class="dropdown-item" href=""> Home      </a></li>
                         <li><a class="dropdown-item" href="{{route('activity.index')}}"> Activités </a></li>
                         <li><a class="dropdown-item" href="{{route('goodPlan.index')}}"> Bon plan  </a></li>
-                        <li><a class="dropdown-item" href=""> Forum</a></li>
+                        <li><a class="dropdown-item" href="{{route('forum.index')}}"> Forum</a></li>
                         <li><a class="dropdown-item" href=""> A propos</a></li>
                     </ul>
                 </li>
@@ -42,7 +42,7 @@
 
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end">
-                        @if(Auth::user() and Auth::user()->email_verified_at != null  )
+                        @auth()
                         <li><a class="dropdown-item" href="">Profil</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><form method="POST" action="{{ route('logout') }}">

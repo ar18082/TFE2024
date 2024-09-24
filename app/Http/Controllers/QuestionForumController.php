@@ -2,16 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category_forum;
+use App\Models\Question;
 use Illuminate\Http\Request;
 
-class ForumController extends Controller
+class QuestionForumController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $questions = Question::with('category')->latest()->get();
+
+        return view('forum.index', compact('questions'));
     }
 
     /**
@@ -19,7 +23,9 @@ class ForumController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category_forum::all();
+        return view('forum.form', compact('categories'));
+
     }
 
     /**
@@ -27,7 +33,20 @@ class ForumController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'body' => 'required',
+            'category_id' => 'required'
+        ]);
+
+        Question::create([
+            'title' => $request->title,
+            'content' => $request->body,
+            'category_id' => $request->category_id,
+            'user_id' => 1
+        ]);
+
+        return redirect()->route('forum.index');
     }
 
     /**
@@ -35,7 +54,10 @@ class ForumController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $question = Question::find($id);
+        $question->load('responses');
+
+        return view('forum.show', compact('question'));
     }
 
     /**
