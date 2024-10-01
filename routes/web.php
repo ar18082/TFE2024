@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\AjaxController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GoodPlanController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InscriptionController;
@@ -64,6 +65,7 @@ Route::get('/searchForm', [SearchController::class, 'searchForm'])->name('search
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/reception', [HomeController::class, 'reception'])->name('reception');
 Route::get('/user', [UserController::class, 'index'])->name('user.index');
+Route::get('/user/{id}', [UserController::class, 'show'])->name('user.show');
 
 Route::resource('goodPlan', GoodPlanController::class);
 Route::resource('activity', ActivityController::class);
@@ -77,6 +79,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+Route::prefix('dashboard')->name('dashboard.')->group(function () {
+    Route::get('/superAdmin', [DashboardController::class, 'SuperAdminDashboard'])->name('superAdmin');
+    Route::get('/admin', [DashboardController::class, 'AdminDashboard'])->name('admin');
+    Route::get('/babysitter', [DashboardController::class, 'BabysitterDashboard'])->name('babysitter');
+    Route::get('/parent', [DashboardController::class, 'ParentDashboard'])->name('parent');
 });
 
 require __DIR__.'/auth.php';

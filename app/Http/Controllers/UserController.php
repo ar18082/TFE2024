@@ -16,6 +16,22 @@ class UserController extends Controller
         return view('user.index' , compact('user'));
     }
 
+    public function show(string $id){
+        $user = User::find($id);
+        return view('user.show', compact('user'));
+    }
+
+    public function edit(string $id){
+        $user = User::find($id)->with('image', 'postal_code_localite', 'babysitterUser', 'parentUser', 'goodPlan', )->first();
+        return view('user.form', compact('user'));
+    }
+
+    public function update(Request $request, string $id){
+        $user = User::find($id);
+        $user->update($request->all());
+        return redirect()->route('user.index')->with('success', 'Votre profil a été mis à jour');
+    }
+
     public function destroy($id)
     {
 

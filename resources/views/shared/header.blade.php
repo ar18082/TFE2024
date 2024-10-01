@@ -1,7 +1,7 @@
+<div class="header row ">
+    <img src="{{ asset('storage/images/background/header.jpg') }}" alt="" class="col-12" height="600px">
+    @include('shared.searchForm')
+</div>
 
 
-    <h1>coucou</h1>
-    {{auth()->user() ? auth()->user()->name : 'not connected'}}
-
-    {{--ruban et  créer un shared pour goodPlan form --}}
 

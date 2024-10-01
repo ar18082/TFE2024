@@ -1,0 +1,16 @@
+.header{
+    position: relative;
+
+}
+
+.containerFormSearch{
+    width: 50%;
+    position: absolute;
+    top: 50%;
+    right: -2%;
+
+
+    & .search_body{
+        background-color: $firstColor;
+    }
+}

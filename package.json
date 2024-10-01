@@ -33,7 +33,12 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
+        "@fullcalendar/core": "^6.1.15",
+        "@fullcalendar/daygrid": "^6.1.15",
+        "@fullcalendar/interaction": "^6.1.15",
+        "@fullcalendar/timegrid": "^6.1.15",
         "bootstrap-icons": "^1.11.3",
+        "chart.js": "^4.4.4",
         "lodash": "^4.17.21",
         "select2": "^4.1.0-rc.0"
     }

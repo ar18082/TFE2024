@@ -13,7 +13,7 @@
                         Menu
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href=""> Home      </a></li>
+                        <li><a class="dropdown-item" href="{{route('home')}}">Home</a></li>
                         <li><a class="dropdown-item" href="{{route('activity.index')}}"> Activités </a></li>
                         <li><a class="dropdown-item" href="{{route('goodPlan.index')}}"> Bon plan  </a></li>
                         <li><a class="dropdown-item" href="{{route('forum.index')}}"> Forum</a></li>

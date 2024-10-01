@@ -19,8 +19,9 @@ class HomeController extends Controller
 
     public function index()
     {
+        $user = User::find(1)->with('postal_code_localite', 'image' )->first();
 
-        return view('home.index');
+        return view('home.index', compact('user'));
     }
 
 //    public function reception(Request $request)

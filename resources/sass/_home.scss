@@ -1,0 +1,40 @@
+.containerRuban{
+    margin-top: 2rem;
+
+    & .body_ruban{
+        background-color: $firstColor;
+        padding: 1rem;
+        border-radius: 5px;
+        border-color: $firstColor;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+}
+
+
+
+
+    .container_title{
+
+        display: flex;
+        align-items: center;
+        margin: 2rem 0;
+
+        & .line {
+            display: flex;
+            align-items: center;
+            flex: 1;
+            height: 1px;
+            margin: 1rem 0;
+            background: black;
+        }
+
+        & h2 {
+            margin: 0 1rem;
+
+        }
+
+    }
+
+
+
+
