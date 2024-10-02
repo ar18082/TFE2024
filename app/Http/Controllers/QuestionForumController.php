@@ -13,7 +13,7 @@ class QuestionForumController extends Controller
      */
     public function index()
     {
-        $questions = Question::with('category')->latest()->get();
+        $questions = Question::with('category', 'user.image', 'responses')->paginate(10);
 
         return view('forum.index', compact('questions'));
     }

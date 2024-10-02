@@ -15,6 +15,7 @@ class GoodPlanController extends Controller
     public function index()
     {
         $date = date('Y-m-d');
+
         $goodPlans = GoodPlan::where('date_end', '>=', $date)
             ->where('date_start', '<=', $date)
             ->with('images')
@@ -23,7 +24,7 @@ class GoodPlanController extends Controller
 
 
 
-        return view('goodPlan.index' , compact('goodPlans'));
+        return view('goodPlan.index' , compact('goodPlans', 'date'));
     }
 
     /**

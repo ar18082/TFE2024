@@ -3,13 +3,13 @@
 @section('title', 'Forum')
 
 @section('content')
-    <a href="{{route('forum.index')}}" class="btn btn-primary">retour</a>
+    <a href="{{route('forum.index')}}" class="btn thirdColor">retour</a>
     <div class="container">
         <!-- Affichage du thread -->
         <div class="card mb-4">
             <div class="card-header">
                 <h2>{{ $question->title }}</h2>
-                <p>Posté par {{ $question->user->name}} {{$question->user->firstname}} dans la catégorie <strong>{{ $question->category->name }}</strong></p>
+                <p>Posté par {{ $question->user->name . ' ' .$question->user->firstname}} dans la catégorie <strong>{{ $question->category->name }}</strong></p>
             </div>
             <div class="card-body">
                 <p>{{ $question->content}}</p>
@@ -49,7 +49,7 @@
                             @enderror
                         </div>
 
-                        <button type="submit" class="btn btn-primary mt-2">Poster votre réponse</button>
+                        <button type="submit" class="btn thirdColor mt-2">Poster votre réponse</button>
                     </form>
                 </div>
             </div>
@@ -57,4 +57,5 @@
             <p class="text-center">Vous devez être connecté pour poster une réponse. <a href="{{ route('login') }}">Se connecter</a></p>
         @endauth
     </div>
+    @include('shared.footer')
 @endsection
