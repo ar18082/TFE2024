@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('postal_code__localites', function (Blueprint $table) {
-            $table->foreignId('city_id')->constrained();
+            $table->foreignId('city_id')->constrained('cities')->onDelete('cascade');
         });
     }
 

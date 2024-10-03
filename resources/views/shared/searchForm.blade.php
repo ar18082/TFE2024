@@ -1,0 +1,2 @@
+@livewire('user-search-form')
+

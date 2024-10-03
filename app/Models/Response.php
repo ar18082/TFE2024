@@ -8,10 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Response extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'content',
-
-    ];
+    protected $fillable = ['content', 'question_id', 'user_id'];
 
     public function user()
     {

@@ -3,6 +3,26 @@
 
 // Variables
 @import 'variables';
+@import "header";
+@import "home";
+@import "user";
+@import "compteRebours";
 
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
+
+.firstColor{
+    background-color: $firstColor;
+}
+
+.secondColor{
+    background-color: $secondColor;
+}
+
+.thirdColor{
+    background-color: $thirdColor;
+}
+
+.colorFour{
+    background-color: $colorFour;
+}

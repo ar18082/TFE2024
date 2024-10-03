@@ -1,7 +1,7 @@
-@extends('base')
+<div class="header row ">
+    <img src="{{ asset('storage/images/background/header.jpg') }}" alt="" class="col-12" height="600px">
+    @include('shared.searchForm')
+</div>
 
 
-@section('content')
-    <h1>coucou</h1>
-{{--ruban et  créer un shared pour search form --}}
-@endsection
+

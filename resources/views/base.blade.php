@@ -8,10 +8,12 @@
 
     <title>@yield("title") | INeedABabysitter</title>
 
-  {{--  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-    <!-- Dans votre fichier de mise en page (layout) ou dans une vue spécifique -->--}}
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Dans votre fichier de mise en page (layout) ou dans une vue spécifique -->
 
 
 
@@ -26,9 +28,9 @@
 <body class="body-bg">
 
 <header>
-
+    @if (!request()->is('login') /*&& !request()->is('inscription')*/)
         @include("shared.navbar")
-
+    @endif
     <div class="container-fluid">
 
        {{-- <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
