@@ -39,9 +39,9 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
 Route::post('/email/resend', function (Request $request) {
     $request->user()->sendEmailVerificationNotification();
     return back()->with('message', 'Verification link sent!');
-})->middleware(['auth', 'throttle:6,1'])->name('verification.resend');
+})->middleware(['auth', 'throttle:4,1440'])->name('verification.resend');
 
-Route::get('/inscription/{user}', [InscriptionController::class, 'index'])->name( 'inscription');
+Route::get('/inscription', [InscriptionController::class, 'index'])->name( 'inscription');
 Route::get('/inscription/attenteConfirmation/{id}', [InscriptionController::class, 'attenteConfirmation'])->name('attenteConfirmation');
 Route::post('/inscription/store', [InscriptionController::class, 'store'])->name('inscription.store');
 
@@ -66,6 +66,8 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/reception', [HomeController::class, 'reception'])->name('reception');
 Route::get('/user', [UserController::class, 'index'])->name('user.index');
 Route::get('/user/{id}', [UserController::class, 'show'])->name('user.show');
+Route::get('/user/{id}/destroy', [UserController::class, 'destroy'])->name('user.destroy');
+
 
 Route::resource('goodPlan', GoodPlanController::class);
 Route::resource('activity', ActivityController::class);

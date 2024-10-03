@@ -2,7 +2,7 @@
     $name ??= '';
 @endphp
 
-<div class="col-md-5">
-    <label for="description_{{$name}}" class="form-label">Description {{$name}}:</label>
-    <textarea id="description_{{$name}}" class="form-control" name="description_{{$name}}" required>{{ old('description') }}</textarea>
-</div>
+
+    <h3 class="h6">Description {{$name}}</h3>
+    <textarea id="description_{{$name}}" class="form-control" rows="3" name="description_{{$name}}" required>{{ old('description') }}</textarea>
+

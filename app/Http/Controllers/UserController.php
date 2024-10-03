@@ -34,9 +34,8 @@ class UserController extends Controller
 
     public function destroy($id)
     {
-
         $user = User::find($id);
         $user->delete();
-        return redirect()->route('home')->with('error', 'l\'Email de confirmation a expiré votre compte a été supprimé');
+        return redirect()->route('home')->with('error', 'votre compte a été supprimé');
     }
 }

@@ -17,10 +17,11 @@ class InscriptionController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request, $user)
+    public function index(Request $request)
     {
+        $id = intval($request->query('user'));
+        $user = User::where('id', $id)->with('postal_code_localite', 'goodPlan', 'question', 'response', 'image')->first();
 
-        $user = User::find($user)->first();
 
         return view('inscription.index', compact('user') );
     }

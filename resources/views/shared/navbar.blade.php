@@ -6,6 +6,7 @@
         <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+        @if(!request()->is('inscription'))
         <div class="collapse navbar-collapse " id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item dropdown btn colorFour m-2">
@@ -30,32 +31,35 @@
                     </ul>
                 </li>
             </ul>
+
             <div>
-                <div class="nav-item dropdown">
-                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        @if(Auth::user() and Auth::user()->email_verified_at != null)
 
-                        <img src="{{asset('storage/images/'.Auth::user()->id.'.jpg')}}">
-                        @else
-                        <i class="fas fa-user"></i>
-                        @endif
+                    <div class="nav-item dropdown">
+                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            @if(Auth::user() and Auth::user()->email_verified_at != null)
+                                <i class="fas fa-user "></i>
 
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end">
-                        @auth()
-                        <li><a class="dropdown-item" href="">Profil</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><form method="POST" action="{{ route('logout') }}">
-                                @csrf
-                                <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault(); this.closest('form').submit();">Se déconnecter</a>
-                            </form>
-                        </li>
-                        @else
-                        <li><a class="dropdown-item" href="{{ route('login') }}">Se connecter</a></li>
-                        <li><a class="dropdown-item" href="{{ route('register') }}">S'inscrire</a></li>
-                        @endif
-                    </ul>
-                </div>
+                            @else
+                            <i class="fas fa-user "></i>
+                            @endif
+
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            @auth()
+                            <li><a class="dropdown-item" href="{{route('user.show', Auth::user()->id)}}">Profil</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault(); this.closest('form').submit();">Se déconnecter</a>
+                                </form>
+                            </li>
+                            @else
+                            <li><a class="dropdown-item" href="{{ route('login') }}">Se connecter</a></li>
+                            <li><a class="dropdown-item" href="{{ route('register') }}">S'inscrire</a></li>
+                            @endif
+                        </ul>
+                    </div>
             </div>
+            @endif
         </div>
 </nav>

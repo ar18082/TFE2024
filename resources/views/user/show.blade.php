@@ -99,11 +99,11 @@
                             </div>
                             <div class="row mb-3">
                                 <div class="col-sm-3">
-                                    <h6 class="mb-0">Description</h6>
+                                    <h6 class="mb-0">Price</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    @if(auth()->user()) <input class="form-control" name="addressNumber" value="{{$user->babySitterUser->price}}">@endif
-                                    <h6>{{$user->babySitterUser->price}} €</h6>
+                                    @if(auth()->user()->role == 'babysitter') <input class="form-control" name="addressNumber" value="{{$user->babySitterUser->price}}">@endif
+                                    <h6>{{$user->babySitterUser->price ?? ''}} €</h6>
                                 </div>
                             </div>
                             <div class="row mb-3">
@@ -112,7 +112,7 @@
                                 </div>
                                 <div class="col-sm-9 text-secondary">
                                     @if(auth()->user()) <textarea class="form-control" name="description"></textarea>@endif
-                                    <h6>{{$user->babySitterUser->description}}</h6>
+                                    <h6>{{$user->babySitterUser->description ?? ''}}</h6>
                                 </div>
                             </div>
                             <div class="row">

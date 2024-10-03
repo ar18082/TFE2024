@@ -28,7 +28,7 @@
 <body class="body-bg">
 
 <header>
-    @if (!request()->is('login') && !request()->is('inscription'))
+    @if (!request()->is('login') /*&& !request()->is('inscription')*/)
         @include("shared.navbar")
     @endif
     <div class="container-fluid">
