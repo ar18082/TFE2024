@@ -1,6 +1,0 @@
-modifier relation user babysitter
-		user parent 
-
-ajouter dans user paren_id et babysitter_id 
-inverser la relation 
-
