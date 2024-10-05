@@ -9,13 +9,13 @@ class BabysitterCustody extends Model
 {
     use HasFactory;
 
-    public function babysitter()
+    public function user()
     {
-        return $this->belongsTo(BabysitterUser::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function custody_criteria()
+    public function CustodyCriteria()
     {
-        return $this->belongsTo(Custody_criteria::class);
+        return $this->belongsTo(Custody_criteria::class, 'criteria_id');
     }
 }

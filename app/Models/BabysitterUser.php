@@ -29,10 +29,7 @@ class BabysitterUser extends Model
         return $this->hasMany(Activity::class);
     }
 
-    public function CustodyCriteria()
-    {
-        return $this->hasMany(BabysitterCustody::class);
-    }
+
 
 
 

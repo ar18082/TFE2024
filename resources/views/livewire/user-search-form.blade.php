@@ -1,40 +1,34 @@
-{{--<div>--}}
-{{--    <form wire:submit.prevent="submit">--}}
-{{--        {{ $this->form }}--}}
-
-{{--        <div class="mt-4">--}}
-{{--            <button type="submit" class="btn btn-primary">--}}
-{{--                Rechercher--}}
-{{--            </button>--}}
-{{--        </div>--}}
-{{--    </form>--}}
-{{--    @if (!empty($searchResults))--}}
-{{--        <div class="mt-4">--}}
-{{--            <h3>Search Results:</h3>--}}
-{{--            <ul>--}}
-{{--                @foreach ($searchResults as $user)--}}
-
-{{--                    <li>@include('user.index')</li>--}}
-{{--                @endforeach--}}
-{{--            </ul>--}}
-{{--        </div>--}}
-{{--    @endif--}}
-
-{{--</div>--}}
-
-
 <div class="containerFormSearch col-6">
     <br/>
     <div class="row justify-content-center">
         <div class="col-12 col-md-10 col-lg-8">
-            <form class="card card-sm" wire:submit.prevent="submit">
+            <form class="card card-sm" wire:submit.prevent="submit" >
                 <div class="card-body row no-gutters align-items-center search_body">
                     <div class="col-auto">
                         <i class="fas fa-search h4 text-body"></i>
                     </div>
+                    <div class="mb-3">
+                        {{ $this->form->getComponent('name') }}
+                    </div>
                     <!--end of col-->
                     <div class="col">
-                        {{ $this->form }}
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                Choisir des critères de garde
+                            </button>
+                            <ul class="dropdown-menu p-3" aria-labelledby="dropdownMenuButton">
+                                <!-- Rendu de la CheckboxList -->
+                                @foreach ($this->form->getComponent('selectedCriteria')->getOptions() as $key => $value)
+                                    <div class="form-check">
+                                        <input wire:model="selectedCriteria" type="checkbox" value="{{ $key }}" id="criteria-{{ $key }}" class="form-check-input">
+                                        <label class="form-check-label" for="criteria-{{ $key }}">{{ $value }}</label>
+                                    </div>
+                                @endforeach
+                            </ul>
+                        </div>
+                        <div class="mb-3">
+                            {{ $this->form->getComponent('postal_code_localite_id') }}
+                        </div>
                     </div>
                     <!--end of col-->
                     <div class="col-auto">
@@ -44,15 +38,24 @@
                 </div>
             </form>
         </div>
-            @if (!empty($searchResults))
-                <div class="mt-4">
-                    <h3>Search Results:</h3>
 
-                        @foreach ($searchResults as $user)
-                           @include('user.index')
-                        @endforeach
+{{--        @if (!empty($searchResults))--}}
+{{--            <div class="mt-4 row col-12">--}}
+{{--                <h3>Search Results:</h3>--}}
 
-                </div>
-            @endif
+{{--                @foreach ($searchResults as $user)--}}
+{{--                    <div class="col-6">--}}
+{{--                        @include('user.index')--}}
+{{--                    </div>--}}
+
+{{--                @endforeach--}}
+
+{{--            </div>--}}
+{{--            <div class="mt-4 row col-12">--}}
+
+{{--                {{ $searchResults->links() }}--}}
+
+{{--            </div>--}}
+{{--        @endif--}}
     </div>
 </div>

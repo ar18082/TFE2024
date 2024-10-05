@@ -5,6 +5,9 @@
 @section('content')
 
 @include('shared.header')
+{{--<div class="container" style="height: 10rem">--}}
+{{--    @include('search.searchResult')--}}
+{{--</div>--}}
 <div class="container containerRuban">
     <div class="row">
         <div class="col-sm-6 col-lg-4">
@@ -48,7 +51,8 @@
         <div class="comment_BabysitterOfMonth ">
             <h3>Témoignages</h3>
         </div>
-        <div class="body_BabysitterOfMonth">
+        <div class="body_BabysitterOfMonth container">
+
             @include('user.index')
         </div>
     </div>

@@ -86,6 +86,12 @@ class User extends Authenticatable implements MustVerifyEmailContract
         return $this->belongsTo(BabysitterUser::class, 'babysitter_user_id');
     }
 
+    public function custodyCriteria()
+    {
+        return $this->belongsToMany(Custody_criteria::class, 'babysitter_custodies', 'user_id', 'criteria_id');
+    }
+
+
     public function goodPlan()
     {
         return $this->hasMany(GoodPlan::class);
