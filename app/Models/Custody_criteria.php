@@ -12,7 +12,7 @@ class Custody_criteria extends Model
     protected $fillable = [
         'custody_criteria',
         'description',
-        'valide',
+
 
     ];
 

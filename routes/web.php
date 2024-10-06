@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\AjaxController;
+use App\Http\Controllers\CustodyCriteriaController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GoodPlanController;
 use App\Http\Controllers\HomeController;
@@ -52,6 +53,8 @@ Route::prefix('/ajax')->name('ajax.')->group(function () {
     Route::get('/inscription/form/babysitter', [AjaxController::class, 'formInscriptionBabysitter'])->name('inscription.form.babysitter');
     Route::get('/inscription/form/children/{name}', [AjaxController::class, 'formInscriptionChildren'])->name('inscription.form.children');
     Route::get('/inscription/aborded/{id}', [UserController::class, 'destroy'])->name('inscription.destroy');
+    Route::get('/listActivities', [DashboardController::class, 'AjaxListActivities'])->name('listActivities');
+    Route::get('/listUsers', [DashboardController::class, 'AjaxListUsers'])->name('listUsers');
 });
 
 
@@ -71,6 +74,7 @@ Route::get('/user/{id}/destroy', [UserController::class, 'destroy'])->name('user
 
 Route::resource('goodPlan', GoodPlanController::class);
 Route::resource('activity', ActivityController::class);
+Route::resource('custodyCriteria', CustodyCriteriaController::class);
 Route::post('/activityInscription', [ActivityController::class, 'activityParent'])->name('activity.inscription');
 Route::resource('forum', QuestionForumController::class);
 Route::post('forum/{question}/response', [ResponseForumController::class, 'store'])->name('response.store');
@@ -84,10 +88,9 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::prefix('dashboard')->name('dashboard.')->group(function () {
-    Route::get('/superAdmin', [DashboardController::class, 'SuperAdminDashboard'])->name('superAdmin');
     Route::get('/admin', [DashboardController::class, 'AdminDashboard'])->name('admin');
-    Route::get('/babysitter', [DashboardController::class, 'BabysitterDashboard'])->name('babysitter');
-    Route::get('/parent', [DashboardController::class, 'ParentDashboard'])->name('parent');
+    Route::get('/babysitter/{id}', [DashboardController::class, 'BabysitterDashboard'])->name('babysitter');
+    Route::get('/parent/{id}', [DashboardController::class, 'ParentDashboard'])->name('parent');
 });
 
 require __DIR__.'/auth.php';

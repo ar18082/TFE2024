@@ -45,6 +45,14 @@ class ActivityController extends Controller
             'visible_end' => 'required',
 
 
+        ], [
+            'title.required' => 'Le titre est obligatoire.',
+            'description.required' => 'La description est obligatoire.',
+            'nbr_children.required' => 'Le nombre d\'enfants est obligatoire.',
+            'price.required' => 'Le prix est obligatoire.',
+            'date_activity.required' => 'La date de l\'activité est obligatoire.',
+            'visible_start.required' => 'La date de début de visibilité est obligatoire.',
+            'visible_end.required' => 'La date de fin de visibilité est obligatoire.',
         ]);
 
         $activity = new Activity();
@@ -58,7 +66,7 @@ class ActivityController extends Controller
         $activity->visible_end = $validatedData['visible_end'];
         $activity->save();
 
-        return redirect()->route('activity.index')->with('success', 'Activity created successfully.');
+        return redirect()->route('activity.index')->with('success', 'Activité créée avec succès.');
     }
 
     /**
@@ -66,7 +74,9 @@ class ActivityController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $activity = Activity::find($id);
+
+        return view('activity.show', compact('activity'));
     }
 
     /**
@@ -108,7 +118,7 @@ class ActivityController extends Controller
         $activity->visible_end = $validatedData['visible_end'];
         $activity->save();
 
-        return redirect()->route('activity.index')->with('success', 'Activity updated successfully.');
+        return redirect()->route('activity.index')->with('success', 'Activité modifiée avec succès.');
 
     }
 
@@ -120,7 +130,7 @@ class ActivityController extends Controller
         $activity = Activity::find($id);
         $activity->delete();
 
-        return redirect()->route('activity.index')->with('success', 'Activity deleted successfully.');
+        return redirect()->route('activity.index')->with('success', 'Activité supprimée avec succès.');
     }
 
     public function activityParent(Request $request)
@@ -134,7 +144,7 @@ class ActivityController extends Controller
         }
 
         if($activity->nbr_children == $nbr_children){
-            return redirect()->route('activity.index')->with('error', 'Activity is full.');
+            return redirect()->route('activity.index')->with('error', 'pas suffisament de place.');
         }elseif($activity->nbr_children >= $request->nbr_children + $nbr_children){
 
             $activity_parent = new Activity_parent();
@@ -142,7 +152,7 @@ class ActivityController extends Controller
             $activity_parent->parent_user_id = 3;
             $activity_parent->nbr_children = $request->nbr_children;
             $activity_parent->save();
-            return redirect()->route('activity.index')->with('success', 'Activity inscription successfully.');
+            return redirect()->route('activity.index')->with('success', 'Inscription réussie.');
         }else{
 
             return redirect()->route('activity.index')->with('error', 'pas suffisament de place. Il reste '.$activity->nbr_children - $nbr_children.' places.');
