@@ -55,6 +55,8 @@ Route::prefix('/ajax')->name('ajax.')->group(function () {
     Route::get('/inscription/aborded/{id}', [UserController::class, 'destroy'])->name('inscription.destroy');
     Route::get('/listActivities', [DashboardController::class, 'AjaxListActivities'])->name('listActivities');
     Route::get('/listUsers', [DashboardController::class, 'AjaxListUsers'])->name('listUsers');
+    Route::get('/listCriterias', [DashboardController::class, 'AjaxListCriterias'])->name('listCriterias');
+    Route::get('/listForum', [DashboardController::class, 'AjaxListForum'])->name('listForum');
 });
 
 

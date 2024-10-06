@@ -65,7 +65,7 @@
                                 <div class="col-lg-6">
                                     <div class="mb-3">
                                         <label class="form-label">Commune/CP</label>
-                                        <select id="postal_code_localite" class="form-control SelectCpLocalite" name="postal_code_localite"></select>
+                                        <select id="postal_code_localite" class="form-select SelectCpLocalite" name="postal_code_localite"></select>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">

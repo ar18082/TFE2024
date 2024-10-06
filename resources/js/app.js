@@ -7,9 +7,12 @@ import chart from 'chart.js/auto';
 // import './compteRebours.js';
 import './select2.js';
 import './inscription.js';
-import './ChartUsers.js';
-import './ChartActivity.js';
-
+import './dashboardPages.js';
+import './chartUsers.js';
+import './chartActivity.js';
+import './chartCriteria.js';
+import './chartForum.js';
+import './dashboardUser.js';
 window.Alpine = Alpine;
 
 Alpine.start();

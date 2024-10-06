@@ -1,7 +1,7 @@
 import {Chart} from "chart.js";
-import './dashboardPages.js';
 
-window.addEventListener('DOMContentLoaded', event => {
+
+if(window.location.pathname == '/dashboard/admin') {
 
     // Toggle the side navigation
     const sidebarToggle = document.body.querySelector('#sidebarToggle');
@@ -118,4 +118,4 @@ window.addEventListener('DOMContentLoaded', event => {
 
 
 
-});
+};

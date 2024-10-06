@@ -9,7 +9,7 @@ class BabysitterCustody extends Model
 {
     use HasFactory;
 
-    public function user()
+    public function users()
     {
         return $this->belongsTo(User::class, 'user_id');
     }

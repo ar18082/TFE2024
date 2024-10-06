@@ -6793,7 +6793,7 @@
     top: 0;
     right: 0;
     left: 0;
-    z-index: 1030;
+
 }
 //
 //.fixed-bottom {
@@ -10854,7 +10854,7 @@
     flex-basis: 225px;
     flex-shrink: 0;
     transition: transform 0.15s ease-in-out;
-    z-index: 1038;
+
     transform: translateX(-225px);
 }
 #layoutSidenav #layoutSidenav_content {
@@ -10880,7 +10880,7 @@
     width: 100%;
     height: 100%;
     background: #000;
-    z-index: 1037;
+
     opacity: 0.5;
     transition: opacity 0.3s ease-in-out;
 }
@@ -10904,12 +10904,12 @@
     }
 }
 .sb-nav-fixed .sb-topnav {
-    z-index: 1039;
+
 }
 .sb-nav-fixed #layoutSidenav #layoutSidenav_nav {
     width: 225px;
     height: 100vh;
-    z-index: 1038;
+
 }
 .sb-nav-fixed #layoutSidenav #layoutSidenav_nav .sb-sidenav {
     padding-top: 56px;

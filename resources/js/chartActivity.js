@@ -1,7 +1,7 @@
 import {Chart} from "chart.js";
-import './dashboardPages.js';
 
-window.addEventListener('DOMContentLoaded', event => {
+
+if(window.location.pathname == '/dashboard/admin') {
 
     axios.get('/ajax/listActivities')
         .then(function (response) {
@@ -11,8 +11,9 @@ window.addEventListener('DOMContentLoaded', event => {
             var particiants = [];
             var years = [];
 
+
             activities.forEach(activity => {
-                console.log(activity);
+
 
                 const date_activity = new Date(activity.date_activity);
                 const creationYear = date_activity.getFullYear();
@@ -79,4 +80,4 @@ window.addEventListener('DOMContentLoaded', event => {
 
 
 
-});
+};

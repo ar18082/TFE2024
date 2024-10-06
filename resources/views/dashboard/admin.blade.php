@@ -4,7 +4,7 @@
 
 @section('content')
 
-<body class="sb-nav-fixed">
+    <body class="sb-nav-fixed">
     <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
             <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
@@ -36,11 +36,13 @@
             </nav>
         </div>
         <div id="layoutSidenav_content">
-            @include('dashboard.listingUser')
-            @include('dashboard.listingActivity')
-            @include('dashboard.listingCriteria')
-            @include('dashboard.listingAbus')
-            @include('dashboard.listingForum')
+            @include('dashboard.admin.listingUser')
+            @include('dashboard.admin.listingActivity')
+            @include('dashboard.admin.listingCriteria')
+            @include('dashboard.admin.listingForum')
+            @include('dashboard.admin.listingAbus')
+
+
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid px-4">
                     <div class="d-flex align-items-center justify-content-between small">
@@ -55,6 +57,6 @@
             </footer>
         </div>
     </div>
-</body>
+    </body>
 
 @endsection

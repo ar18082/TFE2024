@@ -60,11 +60,7 @@
                             <td>
                                 <a href="{{route('activity.show', $activity->id)}}" class="btn thirdColor"><i class="fa-solid fa-eye"></i></a>
                                 <a href="{{route('activity.edit', $activity->id)}}" class="btn btn-warning"><i class="fa-solid fa-pen"></i></a>
-                                <form action="{{route('activity.destroy', $activity->id)}}" method="POST" style="display: inline-block">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
-                                </form>
+                                <a href="{{route('activity.destroy', $activity->id)}}" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
                             </td>
                         </tr>
 
