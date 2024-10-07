@@ -71,7 +71,7 @@
                             <td>{{$user->email}}</td>
                             <td>{{ $user->postal_code_localite ? $user->postal_code_localite->postCode : 'N/A' }}</td>
                             <td>{{ $user->postal_code_localite ? $user->postal_code_localite->localite : 'N/A' }}</td>
-                            <td>{{ $user->role ?? 'N/A' }}</td>
+                            <td>{{ $user->role[0] ??  'N/A'  }}</td>
                             <td>
                                 <a href="{{route('user.show', $user->id)}}" class="btn thirdColor"><i class="fa-solid fa-eye"></i></a>
                                 <a href="" class="btn btn-warning"><i class="fa-solid fa-pen"></i></a>

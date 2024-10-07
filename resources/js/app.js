@@ -4,6 +4,7 @@ import Alpine from 'alpinejs';
 import axios from "axios";
 import chart from 'chart.js/auto';
 
+import './googleMapApi.js';
 import './calendar.js';
 import './select2.js';
 import './inscription.js';

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Custody_criteria;
+use App\Models\Geographic_coodinate;
 use Illuminate\Http\Request;
 
 class AjaxController extends Controller
@@ -29,5 +30,12 @@ class AjaxController extends Controller
     {
 
         return view('inscription.form.Children', compact('name'));
+    }
+
+    public function ajaxGeographicCordinate()
+    {
+        $coodinates = Geographic_coodinate::with('user')->get();
+
+        return response()->json($coodinates);
     }
 }

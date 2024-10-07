@@ -43,6 +43,11 @@ Route::post('/email/resend', function (Request $request) {
     return back()->with('message', 'Verification link sent!');
 })->middleware(['auth', 'throttle:4,1440'])->name('verification.resend');
 
+Route::get('lang/{lang}', function ($lang) {
+    \Session::put('locale', $lang);
+    return redirect()->back();
+})->name('lang.switch');
+
 Route::get('/inscription', [InscriptionController::class, 'index'])->name( 'inscription');
 Route::get('/inscription/attenteConfirmation/{id}', [InscriptionController::class, 'attenteConfirmation'])->name('attenteConfirmation');
 Route::post('/inscription/store', [InscriptionController::class, 'store'])->name('inscription.store');
@@ -61,6 +66,7 @@ Route::prefix('/ajax')->name('ajax.')->group(function () {
     Route::get('/AjaxUserComments/{id}', [DashboardController::class, 'AjaxUserComments'])->name('AjaxUserComments');
     Route::get('/listEvents', [EventController::class, 'AjaxListEvents'])->name('listEvents');
     Route::post('/ajaxUpdateUser', [UserController::class, 'ajaxUpdateUser'])->name('ajaxUpdateUser');
+    Route::get('/ajaxGeographicCordinate', [AjaxController::class, 'ajaxGeographicCordinate'])->name('ajaxGeographicCordinate');
 
 });
 

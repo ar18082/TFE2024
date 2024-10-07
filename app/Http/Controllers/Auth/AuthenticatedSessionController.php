@@ -30,7 +30,18 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        $user = Auth::user();
+
+        if ($user->role === 'babysitter') {
+            return redirect()->intended(RouteServiceProvider::BABYSITTER, ['id' => $user->id]);
+
+        } elseif ($user->role === 'parent') {
+            return redirect()->intended(RouteServiceProvider::PARENT, ['id' => $user->id]);
+        }else{
+            return redirect()->intended(RouteServiceProvider::ADMIN);
+        }
+
+
     }
 
     /**

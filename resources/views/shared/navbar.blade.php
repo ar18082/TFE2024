@@ -26,8 +26,8 @@
                         Langue
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="">Français   <img src="{{asset('img/langues/drap_FR.jpg')}}" alt="drapFR" width="30px" height="30px"></a></li>
-                        <li><a class="dropdown-item" href="">Anglais    <img src="{{asset('img/langues/drap_EN.jpg')}}" alt="drapEN" width="40px" height="30px"></a></li>
+                        <li><a class="dropdown-item" href="">Français   <img src="{{asset('img/langues/drap_FR.jpg')}}" alt="drapFR" width="30" height="30"></a></li>
+                        <li><a class="dropdown-item" href="">Anglais    <img src="{{asset('img/langues/drap_EN.jpg')}}" alt="drapEN" width="40" height="30"></a></li>
                     </ul>
                 </li>
             </ul>
@@ -45,8 +45,16 @@
 
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            @auth()
-                            <li><a class="dropdown-item" href="{{route('user.show', Auth::user()->id)}}">Profil</a></li>
+                            @if(Auth::user())
+                                @if(Auth::user()->role[0] == 'admin')
+                                        <li><a class="dropdown-item" href="{{ route('dashboard.admin') }} ">Profil</a></li>
+                                @elseif(Auth::user()->role[0] == 'babysitter')
+                                        <li><a class="dropdown-item" href="{{ route('dashboard.babysitter', Auth::user()->id ) }} ">Profil</a></li>
+                                @elseif(Auth::user()->role[0] == 'parent')
+                                        <li><a class="dropdown-item" href="{{ route('dashboard.parent', Auth::user()->id ) }} ">Profil</a></li>
+                                @endif
+
+
                             <li><hr class="dropdown-divider"></li>
                             <li><form method="POST" action="{{ route('logout') }}">
                                     @csrf

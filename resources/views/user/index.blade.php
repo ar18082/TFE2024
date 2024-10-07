@@ -4,6 +4,7 @@
             <div class="card radius-15">
                 <div class="card-body text-center">
                     <div class="p-4 border radius-15">
+                        <input type="hidden" class="user_id" value="{{$user->id}}">
                         <img src="{{asset($user->image[0]->url)}}" width="110" height="110" class="rounded-circle shadow" alt="">
                         <h5 class="mb-0 mt-5">{{$user->firstname . ' ' . $user->name}}</h5>
                         <p class="mb-3">{{$user->postal_code_localite ?$user->postal_code_localite->postCode. ' ' .$user->postal_code_localite->localite : 'NAN'}}</p>
