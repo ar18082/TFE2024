@@ -55,6 +55,8 @@ if(window.location.pathname.includes('/dashboard')){
             }
             userTexArea.style.display = 'none';
             userSelect.style.display = 'block';
+
+            // send the json object to the server
             console.log(datas);
         });
 

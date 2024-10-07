@@ -1,4 +1,4 @@
-<div class="main-body">
+<div class="main-body" id="templateUser">
     <div class="row">
         <div class="col-lg-4">
             <div class="card">
@@ -131,6 +131,13 @@
                         <div class="card">
                             <div class="card-body">
                                 <h5 class="d-flex align-items-center mb-3">Critères de garde</h5>
+                                <div class="row mb-3">
+                                    <div class="col-sm-3">
+                                        @foreach($user->custodyCriteria as $criteria)
+                                            <h6 class="mb-0">{{$criteria->custody_criteria}}</h6>
+                                        @endforeach
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -140,6 +147,13 @@
                         <div class="card">
                             <div class="card-body">
                                 <h5 class="d-flex align-items-center mb-3">Activités</h5>
+                                <div class="row mb-3">
+                                    <div class="col-sm-3">
+                                        @foreach($activities as $activity)
+                                            <h6 class="mb-0">{{$activity->title}}</h6>
+                                        @endforeach
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -149,6 +163,15 @@
                         <div class="card">
                             <div class="card-body">
                                 <h5 class="d-flex align-items-center mb-3">Commentaires</h5>
+                                <div class="col-sm-3">
+                                    @foreach($user->babySitterUser->comments as $comment)
+                                        <div class="col-sm-3" >
+                                            <h6 class="mb-0">{{$comment->content}}</h6>
+                                            <h6 class="mb-0">{{$comment->note}}</h6>
+                                        </div>
+
+                                    @endforeach
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -38,24 +38,5 @@
                 </div>
             </form>
         </div>
-
-{{--        @if (!empty($searchResults))--}}
-{{--            <div class="mt-4 row col-12">--}}
-{{--                <h3>Search Results:</h3>--}}
-
-{{--                @foreach ($searchResults as $user)--}}
-{{--                    <div class="col-6">--}}
-{{--                        @include('user.index')--}}
-{{--                    </div>--}}
-
-{{--                @endforeach--}}
-
-{{--            </div>--}}
-{{--            <div class="mt-4 row col-12">--}}
-
-{{--                {{ $searchResults->links() }}--}}
-
-{{--            </div>--}}
-{{--        @endif--}}
     </div>
 </div>

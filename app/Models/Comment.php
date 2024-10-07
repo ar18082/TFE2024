@@ -13,9 +13,12 @@ class Comment extends Model
         'note',
     ];
 
+
+
+
     public function parentUser()
     {
-        return $this->belongsTo(ParentUser::class);
+        return $this->belongsTo(User::class, 'parent_user_id');
     }
 
     public function babysitterUser()

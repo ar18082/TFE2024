@@ -1,17 +1,6 @@
-<main id="listingCriteria">
+<main id="templateCriteria">
     <div class="container-fluid px-4">
         <h1 class="mt-4">Critères de garde</h1>
-        <div class="row">
-            <div class="col-xl-12">
-                <div class="card mb-4">
-                    <div class="card-header">
-                        <i class="fas fa-chart-area me-1"></i>
-                        Graphique des critères de garde
-                    </div>
-                    <div class="card-body"><canvas id="criteriaChart" width="100%" height="40"></canvas></div>
-                </div>
-            </div>
-        </div>
         <div class="card mb-4">
             <div class="card-header">
                 <i class="fas fa-table me-1"></i>
@@ -36,7 +25,7 @@
                     </tr>
                     </tfoot>
                     <tbody id="tbodyListCriteria">
-                    @foreach($criterias as $criteria)
+                    @foreach($user->custodyCriteria as $criteria)
 
                         <tr>
                             <th scope="row">{{$criteria->id}}</th>
@@ -53,8 +42,6 @@
                 </table>
                 <div id=""></div>
             </div>
-
-            {{--            {{ $users->links('vendor.pagination.bootstrap-4') }}--}}
         </div>
     </div>
 </main>

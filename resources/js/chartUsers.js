@@ -1,4 +1,6 @@
 import {Chart} from "chart.js";
+import axios from "axios";
+import theme from "tailwindcss/defaultTheme.js";
 
 
 if(window.location.pathname == '/dashboard/admin') {
@@ -119,3 +121,55 @@ if(window.location.pathname == '/dashboard/admin') {
 
 
 };
+
+if(window.location.pathname.includes('/dashboard/babysitter')) {
+    window.addEventListener('DOMContentLoaded', event => {
+        var userId = document.getElementById('userId').value;
+
+        axios.get('/ajax/AjaxUserComments/${userId}')
+            .then(function (response) {
+                const comments = response.data;
+                var months = [];
+                var notes = [];
+                const year = new Date().getFullYear();
+                comments.forEach(comment => {
+                    const creationDate = new Date(comment.created_at);
+                    const creationMonth = creationDate.getMonth();
+                    const creationYear = creationDate.getFullYear();
+                    if (creationYear === year) {
+                        if (!months.includes(creationMonth)) {
+                            months.push(creationMonth);
+                            notes[months.indexOf(creationMonth)] = 0;
+                        }
+                        const index = months.indexOf(creationMonth);
+                        notes[index] += comment.note;
+                    }
+                });
+                var commentChart = document.getElementById('CommentChart').getContext('2d');
+                new Chart(commentChart, {
+                    type: 'bar',
+                    data: {
+                        labels: months,
+                        datasets: [{
+                            label: 'Commentaires',
+                            data: notes,
+                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+
+    });
+}

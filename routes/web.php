@@ -4,6 +4,7 @@ use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\AjaxController;
 use App\Http\Controllers\CustodyCriteriaController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\GoodPlanController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InscriptionController;
@@ -57,6 +58,9 @@ Route::prefix('/ajax')->name('ajax.')->group(function () {
     Route::get('/listUsers', [DashboardController::class, 'AjaxListUsers'])->name('listUsers');
     Route::get('/listCriterias', [DashboardController::class, 'AjaxListCriterias'])->name('listCriterias');
     Route::get('/listForum', [DashboardController::class, 'AjaxListForum'])->name('listForum');
+    Route::get('/AjaxUserComments/{id}', [DashboardController::class, 'AjaxUserComments'])->name('AjaxUserComments');
+    Route::get('/listEvents', [EventController::class, 'AjaxListEvents'])->name('listEvents');
+
 });
 
 
@@ -73,7 +77,7 @@ Route::get('/user', [UserController::class, 'index'])->name('user.index');
 Route::get('/user/{id}', [UserController::class, 'show'])->name('user.show');
 Route::get('/user/{id}/destroy', [UserController::class, 'destroy'])->name('user.destroy');
 
-
+Route::resource('event', EventController::class);
 Route::resource('goodPlan', GoodPlanController::class);
 Route::resource('activity', ActivityController::class);
 Route::resource('custodyCriteria', CustodyCriteriaController::class);

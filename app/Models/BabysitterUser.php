@@ -16,17 +16,17 @@ class BabysitterUser extends Model
 
     public function favorites()
     {
-        return $this->hasMany(Favorites::class);
+        return $this->hasMany(Favorites::class, 'babysitter_user_id');
     }
 
     public function comments()
     {
-        return $this->hasMany(Comment::class);
+        return $this->hasMany(Comment::class, 'babysitter_user_id');
     }
 
     public function activities()
     {
-        return $this->hasMany(Activity::class);
+        return $this->hasMany(Activity::class, 'babysitter_user_id');
     }
 
 

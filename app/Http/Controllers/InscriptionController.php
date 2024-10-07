@@ -51,9 +51,6 @@ class InscriptionController extends Controller
 
       ]);
 
-
-
-
         if($request->role == 'babysitter'){
             $request->validate([
                 'price' => 'required',
@@ -68,10 +65,10 @@ class InscriptionController extends Controller
             $babysitter->save();
 
             foreach ($request->custodies as $custody){
-                $custody = new BabysitterCustody();
-                $custody->babysitterUser_id = $babysitter->id;
-                $custody->custody_criterias_id = $custody->id;
-                $custody->save();
+                $criteria = new BabysitterCustody();
+                $criteria->babysitterUser_id = $babysitter->id;
+                $criteria->custody_criterias_id = $custody->id;
+                $criteria->save();
             }
 
 
