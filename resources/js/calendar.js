@@ -15,22 +15,19 @@ axios.get('/ajax/listEvents')
             locale: 'fr',
             timeZone: 'Europe/Paris',
             headerToolbar: {
-                left: 'prev,next today',
+                left: 'prev,next',
                 center: 'title',
-                right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+                right: 'dayGridMonth',
 
             },
             initialView: 'dayGridMonth',
             buttonText: {
-                today: 'Aujourd\'hui',
                 month: 'Mois',
-                week: 'Semaine',
-                day: 'Jour',
             },
             nowIndicator: true,
-            editable: true,
-            droppable: true,
-            selectable: true,
+            editable: false,
+            droppable: false,
+            selectable: false,
             events: events,
             // eventReceive: function(info){
             //     console.log(info.event);

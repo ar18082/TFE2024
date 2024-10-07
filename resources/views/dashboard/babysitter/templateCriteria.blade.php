@@ -1,10 +1,10 @@
 <main id="templateCriteria">
     <div class="container-fluid px-4">
-        <h1 class="mt-4">Critères de garde</h1>
+        <h1 class="mt-4">Mes Critères de garde</h1>
         <div class="card mb-4">
             <div class="card-header">
                 <i class="fas fa-table me-1"></i>
-                Liste des critères de garde
+                Liste de mes critères de garde
             </div>
             <div class="card-body">
                 <table id="datatablesSimple"  class="table table-striped">
@@ -30,7 +30,13 @@
                         <tr>
                             <th scope="row">{{$criteria->id}}</th>
                             <td>{{$criteria->custody_criteria}}</td>
-                            <td>{{$criteria->valide}}</td>
+                            <td>
+                                @if($criteria->valide == true)
+                                    <i class="fa-solid fa-shield-check text-success"></i>
+                                @else
+                                    En attente
+                                @endif
+                            </td>
                             <td>
                                 <a href="{{route('custodyCriteria.show', $criteria->id)}}" class="btn thirdColor"><i class="fa-solid fa-eye"></i></a>
                                 <a href="{{route('custodyCriteria.edit', $criteria->id)}}" class="btn btn-warning"><i class="fa-solid fa-pen"></i></a>

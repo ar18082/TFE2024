@@ -32,6 +32,40 @@ class UserController extends Controller
         return redirect()->route('user.index')->with('success', 'Votre profil a été mis à jour');
     }
 
+    public function ajaxUpdateUser(Request $request)
+    {
+        //take the data send with axios
+        $data = $request->all();
+
+        $id = intval($data['user_id']);
+        $name = $data['name'];
+        $email = $data['email'];
+        $phone = $data['phoneNumber'];
+        $addressStreet = $data['addressStreet'];
+        $addressNumber = $data['addressNumber'];
+        $price = $data['price'];
+        $postal_code_localite = $data['postal_code_localite'];
+        $description = $data['description'];
+
+
+        $user = User::find($id);
+
+        $user->name = $name;
+        $user->email = $email;
+        $user->phone = $phone;
+        $user->addressStreet = $addressStreet;
+        $user->addressNumber = $addressNumber;
+        $user->price = $price;
+        $user->postal_code_localite_id = $postal_code_localite;
+        $user->description = $description;
+
+        dd($user);
+//        $user->save();
+
+        return response()->json(['success' => 'Votre profil a été mis à jour'], 200);
+
+    }
+
     public function destroy($id)
     {
         $user = User::find($id);

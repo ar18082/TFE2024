@@ -39,7 +39,7 @@
                         <th>Action</th>
                     </tr>
                     </tfoot>
-                    <tbody id="tbodyListActivities">
+                    <tbody id="tbodyListForum">
                     @foreach($forum as $sujet)
                         <tr>
                             <th scope="row">{{$sujet->id}}</th>

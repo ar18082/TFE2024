@@ -4,7 +4,7 @@
         @csrf
         <div class="form-group">
             <label for="custody_criteria" class="form-label">Titre</label>
-            <input type="text" id="title" name="title" class="form-control">
+            <input type="text" id="title" name="title" class="form-control" value="">
 
         </div>
 

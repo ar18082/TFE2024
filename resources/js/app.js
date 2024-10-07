@@ -8,6 +8,7 @@ import './calendar.js';
 import './select2.js';
 import './inscription.js';
 import './dashboardPages.js';
+import './dashboardPagesParent.js';
 import './chartUsers.js';
 import './chartActivity.js';
 import './chartCriteria.js';

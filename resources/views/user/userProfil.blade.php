@@ -14,16 +14,8 @@
                     <hr class="my-4">
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                            <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-twitter me-2 icon-inline text-info"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>Twitter</h6>
-                            <span class="text-secondary">@bootdey</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                            <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram me-2 icon-inline text-danger"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>Instagram</h6>
-                            <span class="text-secondary">bootdey</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                            <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-facebook me-2 icon-inline text-primary"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>Facebook</h6>
-                            <span class="text-secondary">bootdey</span>
+                            <h6 class="mb-0"><i class="fa-brands fa-facebook"></i> <i class="fa-brands fa-instagram"></i> </h6>
+                            <a href="{{$user->babysitterUser->social_network ?? ''}}" class="text-secondary">{{$user->babysitterUser->social_network ?? ''}}</a>
                         </li>
                     </ul>
                 </div>
@@ -38,7 +30,7 @@
                         </div>
                         <div class="col-sm-9 text-secondary">
                             <input type="hidden" class="form-control" name="name" value="{{$user->name}}">
-
+                            <input type="hidden" class="form-control" name="user_id" value="{{$user->id}}">
                         </div>
                     </div>
                     <div class="row mb-3 ">
@@ -97,6 +89,7 @@
                             </select>
                         </div>
                     </div>
+                    @if($user->babySitterUser != null)
                     <div class="row mb-3">
                         <div class="col-sm-3">
                             <h6 class="mb-0">Price</h6>
@@ -106,13 +99,26 @@
                             <h6  class="valueUser">{{$user->babySitterUser->price ?? ''}} €</h6>
                         </div>
                     </div>
+                    @endif
                     <div class="row mb-3">
                         <div class="col-sm-3">
                             <h6 class="mb-0">Description</h6>
                         </div>
                         <div class="col-sm-9 text-secondary">
-                           <textarea class="form-control" id="userTexArea" name="description">{{$user->babySitterUser->description ?? ''}}</textarea>
-                            <h6  class="valueUser">{{$user->babySitterUser->description ?? ''}}</h6>
+                           <textarea class="form-control" id="userTexArea" name="description">
+                                @if($user->babySitterUser != null)
+                                    {{$user->babySitterUser->description}}
+                               @elseif($user->parentUser != null)
+                                    {{$user->parentUser->description}}
+                               @endif
+                           </textarea>
+                            <h6 class="valueUser">
+                                @if($user->babySitterUser != null)
+                                    {{$user->babySitterUser->description}}
+                                @elseif($user->parentUser != null)
+                                    {{$user->parentUser->description}}
+                                @endif
+                            </h6>
                         </div>
                     </div>
                     <div class="row" id="btnEditSubmitUser">
@@ -142,37 +148,46 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+            @elseif($user->parent_user_id)
+                <div class="row mt-4">
                     <div class="col-sm-12">
                         <div class="card">
-                            <div class="card-body">
-                                <h5 class="d-flex align-items-center mb-3">Activités</h5>
-                                <div class="row mb-3">
-                                    <div class="col-sm-3">
-                                        @foreach($activities as $activity)
-                                            <h6 class="mb-0">{{$activity->title}}</h6>
-                                        @endforeach
-                                    </div>
-                                </div>
+                            <div class="card-header">
+                                <h6>Les enfants </h6>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="d-flex align-items-center mb-3">Commentaires</h5>
-                                <div class="col-sm-3">
-                                    @foreach($user->babySitterUser->comments as $comment)
-                                        <div class="col-sm-3" >
-                                            <h6 class="mb-0">{{$comment->content}}</h6>
-                                            <h6 class="mb-0">{{$comment->note}}</h6>
-                                        </div>
+                            <table id="datatablesSimple"  class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Prénom</th>
+                                    <th>nom</th>
+                                    <th>Date de naissance</th>
+                                    <th>Action</th>
+                                </tr>
+                                </thead>
+                                <tfoot>
+                                <tr>
+                                    <th>Prénom</th>
+                                    <th>nom</th>
+                                    <th>Date de naissance</th>
+                                    <th>Action</th>
+                                </tr>
+                                </tfoot>
+                                <tbody>
+                                @foreach($children as $child)
 
-                                    @endforeach
-                                </div>
-                            </div>
+                                    <tr>
+                                        <th scope="row">{{$child->firstname}}</th>
+                                        <td>{{$child->name}}</td>
+                                        <td>{{$child->Date_of_birth}}</td>
+                                        <td>
+                                            <a href="{{route('children.show', $child->id)}}" class="btn thirdColor"><i class="fa-solid fa-eye"></i></a>
+                                            <a href="{{route('children.edit', $child->id)}}" class="btn btn-warning"><i class="fa-solid fa-pen"></i></a>
+                                            <a href="{{route('children.destroy', $child->id)}}" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>

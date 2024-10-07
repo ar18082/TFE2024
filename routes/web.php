@@ -60,6 +60,7 @@ Route::prefix('/ajax')->name('ajax.')->group(function () {
     Route::get('/listForum', [DashboardController::class, 'AjaxListForum'])->name('listForum');
     Route::get('/AjaxUserComments/{id}', [DashboardController::class, 'AjaxUserComments'])->name('AjaxUserComments');
     Route::get('/listEvents', [EventController::class, 'AjaxListEvents'])->name('listEvents');
+    Route::post('/ajaxUpdateUser', [UserController::class, 'ajaxUpdateUser'])->name('ajaxUpdateUser');
 
 });
 
@@ -76,6 +77,7 @@ Route::get('/reception', [HomeController::class, 'reception'])->name('reception'
 Route::get('/user', [UserController::class, 'index'])->name('user.index');
 Route::get('/user/{id}', [UserController::class, 'show'])->name('user.show');
 Route::get('/user/{id}/destroy', [UserController::class, 'destroy'])->name('user.destroy');
+
 
 Route::resource('event', EventController::class);
 Route::resource('goodPlan', GoodPlanController::class);

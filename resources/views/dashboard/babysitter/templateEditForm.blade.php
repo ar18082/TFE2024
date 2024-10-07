@@ -1,6 +1,6 @@
 @extends('base')
 
-@section('title', 'tableau de bord baby-sitter')
+@section('title', 'tableau de bord babysitter')
 
 @section('content')
     <body class="sb-nav-fixed">
@@ -20,7 +20,11 @@
                         </a>
                         <a class="nav-link" href="#" id="btnActivities">
                             <div class="sb-nav-link-icon"><i class="fa-solid fa-volleyball"></i></div>
-                             Mes activités
+                            Mes activités
+                        </a>
+                        <a class="nav-link" href="#" id="btnCriterias">
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-list"></i></div>
+                            Mes critères de grade
                         </a>
                         <a class="nav-link" href="#" id="btnGoodPlan">
                             <div class="sb-nav-link-icon"><i class="fa-solid fa-thumbs-up"></i></div>
@@ -44,7 +48,16 @@
         </div>
         <div id="layoutSidenav_content">
             <div class="row">
-                <div class="col-xl-6"></div>
+                <div class="col-xl-6">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <i class="fas fa-chart-area me-1"></i>
+                            Nombre d'étoiles
+                        </div>
+                        <input type="hidden" id="userId" value="{{$event->user_id }}">
+                        <div class="card-body"><canvas id="CommentChart" width="100%" height="40"></canvas></div>
+                    </div>
+                </div>
                 <div class="col-xl-6">
                     <div class="card mb-4">
                         <div class="card-header">
@@ -62,7 +75,7 @@
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                           @include('event.form')
+                                            @include('event.form')
                                         </div>
 
                                     </div>
@@ -85,9 +98,12 @@
             @include('dashboard.babysitter.templateComment')
             @include('dashboard.babysitter.templateFavorite')
             @include('dashboard.babysitter.templateCalendar')
+            @include('event.editForm')
+
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid px-4">
                     <div class="d-flex align-items-center justify-content-between small">
+
                     </div>
                 </div>
             </footer>
@@ -96,3 +112,5 @@
     </body>
 
 @endsection
+
+

@@ -158,11 +158,6 @@ class ActivityController extends Controller
             return redirect()->route('activity.index')->with('error', 'pas suffisament de place. Il reste '.$activity->nbr_children - $nbr_children.' places.');
         }
 
-
-
-
-
-
     }
 
 

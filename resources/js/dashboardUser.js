@@ -1,4 +1,4 @@
-if(window.location.pathname.includes('/dashboard')){
+if(window.location.pathname.includes('/dashboard') || window.location.pathname.includes('/event/ ' && '/edit')) {
     window.addEventListener('DOMContentLoaded', event => {
         var btnEditSubmitUser = document.getElementById('btnEditSubmitUser');
         var btnSubmitUser = document.getElementById('btnSubmitUser');
@@ -8,6 +8,7 @@ if(window.location.pathname.includes('/dashboard')){
         var userSelect = document.getElementById('userSelect');
         var inputs = document.querySelectorAll('input');
         var valueUser = document.getElementsByClassName('valueUser');
+        var postal_code_localite = document.getElementById('postal_code_localite');
 
 
 
@@ -29,7 +30,9 @@ if(window.location.pathname.includes('/dashboard')){
                 inputEditUser[i].style.display = 'block';
             }
             for(let i = 0; i < inputs.length; i++){
-                inputs[i].type = 'text';
+                if(inputs[i].name !== 'user_id'){
+                    inputs[i].type = 'text';
+                }
             }
             userTexArea.style.display = 'block';
             userSelect.style.display = 'block';
@@ -53,11 +56,20 @@ if(window.location.pathname.includes('/dashboard')){
                 datas[inputs[i].name] = inputs[i].value;
                 inputs[i].type = 'hidden';
             }
+
+            datas[userTexArea.name] = userTexArea.value;
+            datas[postal_code_localite.name] = postal_code_localite.value;
             userTexArea.style.display = 'none';
-            userSelect.style.display = 'block';
+            userSelect.style.display = 'none';
 
             // send the json object to the server
-            console.log(datas);
+            axios.post('/ajax/ajaxUpdateUser', datas)
+                .then(function (response) {
+                    console.log(response);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
         });
 
 

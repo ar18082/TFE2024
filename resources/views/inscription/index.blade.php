@@ -24,6 +24,7 @@
                                     <div class="mb-3">
                                         <label class="form-label">Prénom</label>
                                         <input type="text" class="form-control" name="firstname" value="{{$user->firstname}}">
+                                        <input type="hidden" name="user_id" value="{{$user->id}}">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">

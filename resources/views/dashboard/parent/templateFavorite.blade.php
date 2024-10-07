@@ -7,7 +7,7 @@
                 Liste de mes favoris
             </div>
             <div class="card-body">
-            @foreach($favorites as $user->parentUser)
+            @foreach($favorites as $user->babysitterUser)
                 @include('user.index')
             @endforeach
             </div>

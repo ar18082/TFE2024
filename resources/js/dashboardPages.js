@@ -68,7 +68,7 @@ if(window.location.pathname == '/dashboard/admin') {
 
 };
 
-if(window.location.pathname.includes('/dashboard/babysitter')) {
+if(window.location.pathname.includes('/dashboard/babysitter') || window.location.pathname.includes('/event/ ' && '/edit')) {
     var btnUser = document.getElementById('btnUsers');
     var btnActivity = document.getElementById('btnActivities');
     var btnCriteria = document.getElementById('btnCriterias');
@@ -86,9 +86,15 @@ if(window.location.pathname.includes('/dashboard/babysitter')) {
     var templateComment = document.getElementById('templateComment');
     var templateFavorite = document.getElementById('templateFavorite');
     var templateCalendar = document.getElementById('templateCalendar');
+    if(window.location.pathname.includes('/event/ ' && '/edit')) {
+        var editForm = document.getElementById('editForm');
+        editForm.style.display = 'block';
+        templateUser.style.display = 'none';
+    }else{
+        templateUser.style.display = 'block';
+    }
 
 
-    templateUser.style.display = 'block';
     templateActivity.style.display = 'none';
     templateCriteria.style.display = 'none';
     templateGoodPlan.style.display = 'none';
@@ -107,6 +113,11 @@ if(window.location.pathname.includes('/dashboard/babysitter')) {
         templateComment.style.display = 'none';
         templateFavorite.style.display = 'none';
         templateCalendar.style.display = 'none';
+        if(window.location.pathname.includes('/event/ ' && '/edit')) {
+
+            editForm.style.display = 'none';
+
+        }
     });
 
     btnActivity.addEventListener('click', function () {
@@ -118,6 +129,11 @@ if(window.location.pathname.includes('/dashboard/babysitter')) {
         templateComment.style.display = 'none';
         templateFavorite.style.display = 'none';
         templateCalendar.style.display = 'none';
+        if(window.location.pathname.includes('/event/ ' && '/edit')) {
+
+            editForm.style.display = 'none';
+
+        }
     });
 
     btnCriteria.addEventListener('click', function () {
@@ -129,6 +145,11 @@ if(window.location.pathname.includes('/dashboard/babysitter')) {
         templateComment.style.display = 'none';
         templateFavorite.style.display = 'none';
         templateCalendar.style.display = 'none';
+        if(window.location.pathname.includes('/event/ ' && '/edit')) {
+
+            editForm.style.display = 'none';
+
+        }
     });
 
     btnGoodPlan.addEventListener('click', function () {
@@ -140,6 +161,11 @@ if(window.location.pathname.includes('/dashboard/babysitter')) {
         templateComment.style.display = 'none';
         templateFavorite.style.display = 'none';
         templateCalendar.style.display = 'none';
+        if(window.location.pathname.includes('/event/ ' && '/edit')) {
+
+            editForm.style.display = 'none';
+
+        }
     });
 
     btnForums.addEventListener('click', function () {
@@ -162,6 +188,11 @@ if(window.location.pathname.includes('/dashboard/babysitter')) {
         templateComment.style.display = 'block';
         templateFavorite.style.display = 'none';
         templateCalendar.style.display = 'none';
+        if(window.location.pathname.includes('/event/ ' && '/edit')) {
+
+            editForm.style.display = 'none';
+
+        }
     });
 
     btnFavorite.addEventListener('click', function () {
@@ -173,6 +204,11 @@ if(window.location.pathname.includes('/dashboard/babysitter')) {
         templateComment.style.display = 'none';
         templateFavorite.style.display = 'block';
         templateCalendar.style.display = 'none';
+        if(window.location.pathname.includes('/event/ ' && '/edit')) {
+
+            editForm.style.display = 'none';
+
+        }
     });
 
     btnCalendar.addEventListener('click', function () {
@@ -184,8 +220,15 @@ if(window.location.pathname.includes('/dashboard/babysitter')) {
         templateComment.style.display = 'none';
         templateFavorite.style.display = 'none';
         templateCalendar.style.display = 'block';
+        if(window.location.pathname.includes('/event/ ' && '/edit')) {
+
+            editForm.style.display = 'none';
+
+        }
     });
 
 
 };
+
+
 

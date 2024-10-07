@@ -122,7 +122,7 @@ if(window.location.pathname == '/dashboard/admin') {
 
 };
 
-if(window.location.pathname.includes('/dashboard/babysitter')) {
+if(window.location.pathname.includes('/dashboard/babysitter') || window.location.pathname.includes('/event/ ' && '/edit')) {
     window.addEventListener('DOMContentLoaded', event => {
         var userId = document.getElementById('userId').value;
 

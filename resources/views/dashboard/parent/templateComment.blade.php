@@ -1,38 +1,41 @@
-<main id="templateForum">
+<main id="templateComment">
     <div class="container-fluid px-4">
-        <h1 class="mt-4">Mes sujets </h1>
+        <h1 class="mt-4">Mes commentaires </h1>
         <div class="card mb-4">
             <div class="card-header">
                 <i class="fas fa-table me-1"></i>
-                Liste des sujets créés
+                Liste des commentaires
             </div>
             <div class="card-body">
                 <table id="datatablesSimple"  class="table table-striped">
                     <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Titre</th>
-                        <th>Catégorie</th>
+                        <th>Contenu</th>
+                        <th>Note</th>
+                        <th>Auteur</th>
                         <th>Action</th>
                     </tr>
                     </thead>
                     <tfoot>
                     <tr>
                         <th>Id</th>
-                        <th>Titre</th>
-                        <th>Catégorie</th>
+                        <th>Contenu</th>
+                        <th>Note</th>
+                        <th>Auteur</th>
                         <th>Action</th>
                     </tr>
                     </tfoot>
-                    <tbody id="tbodyListCriteria">
-                    @foreach($questions as $question)
+                    <tbody id="">
+                    @foreach($comments as $comment)
 
                         <tr>
-                            <th scope="row">{{$question->id}}</th>
-                            <td>{{$question->title}}</td>
-                            <td>{{$question->category->name}}</td>
+                            <th scope="row">{{$comment->id}}</th>
+                            <td>{{$comment->content}}</td>
+                            <td>{{$comment->note}}</td>
+                            <td><a href="{{route('user.show', $comment->babysitter_user_id)}}">{{$comment->baysitterUser->firstname . ' ' . $comment->baysitterUser->name }}</a></td>
                             <td>
-                                <a href="{{route('forum.show', $question->id)}}" class="btn thirdColor"><i class="fa-solid fa-eye"></i></a>
+                                <a href="{{route('forum.show', $comment->id)}}" class="btn thirdColor"><i class="fa-solid fa-eye"></i></a>
                             </td>
                         </tr>
                     @endforeach
@@ -42,4 +45,5 @@
             </div>
         </div>
     </div>
+
 </main>

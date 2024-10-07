@@ -6,6 +6,7 @@ use App\Models\BabysitterCustody;
 use App\Models\BabysitterUser;
 use App\Models\Children;
 use App\Models\Custody_criteria;
+use App\Models\Geographic_coodinate;
 use App\Models\Image;
 use App\Models\ParentUser;
 use App\Models\User;
@@ -39,7 +40,7 @@ class InscriptionController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request->all());
+
 
       $request->validate([
             'role' => 'required',
@@ -47,14 +48,23 @@ class InscriptionController extends Controller
             'phoneNumber' => 'required',
             'addressStreet' => 'required',
             'postal_code_localite' => 'required',
-            'desciption'.$request->role => 'required',
+
+
+      ],[
+            'role' => 'Veuillez choisir un role',
+            'files' => 'Veuillez choisir une image',
+            'phoneNumber' => 'Veuillez entrer un numéro de téléphone',
+            'addressStreet' => 'Veuillez entrer une rue',
+            'postal_code_localite' => 'Veuillez entrer un code postal',
 
       ]);
+
+
 
         if($request->role == 'babysitter'){
             $request->validate([
                 'price' => 'required',
-                'custodies' => 'required',
+                'custody_criterias' => 'required',
 
             ]);
 
@@ -64,12 +74,7 @@ class InscriptionController extends Controller
             $babysitter->social_network = $request->social_network;
             $babysitter->save();
 
-            foreach ($request->custodies as $custody){
-                $criteria = new BabysitterCustody();
-                $criteria->babysitterUser_id = $babysitter->id;
-                $criteria->custody_criterias_id = $custody->id;
-                $criteria->save();
-            }
+
 
 
 
@@ -94,14 +99,46 @@ class InscriptionController extends Controller
         }
 
 
-        $user = User::find($request->user_id)->first();
-        $user->role = $request->role;
+        $user = User::where('id', $request->user_id)->with('postal_code_localite', 'geographic_coodinates')->first();
+        $user->role = [$request->role];
         $user->phoneNumber = $request->phoneNumber;
         $user->addressStreet = $request->addressStreet;
         $user->addressNumber = $request->addressNumber;
-        $user->postal_code_localite = $request->postal_code_localite;
-        $user->description = $request->description.$request->role;
+        $user->postal_code_localite_id = $request->postal_code_localite;
         $user->save();
+
+        //appelle à la fonction pour la géolocalisation
+
+
+        // check if the client has latitude and longitude for marker on the map
+        if ($user->geographic_coodinates == null) {
+
+            $address = $user->addressStreet. ' '. $user->addressNumber . ', ' . $user->postal_code_localite['postCode'] . ' ' . $user->postal_code_localite['localite'] . ',Bel';
+
+            $coordinates = geocodeAddress($address);
+
+            // Clé API Google Maps Geocoding
+
+            if ($coordinates) {
+                $datasGeoCoordinates = new Geographic_coodinate();
+                $datasGeoCoordinates->latitude = $coordinates['latitude'];
+                $datasGeoCoordinates->longitude = $coordinates['longitude'];
+                $datasGeoCoordinates->user_id = $user->id;
+                $datasGeoCoordinates->save();
+
+            }
+        }
+
+        if($request->role == 'babysitter'){
+            foreach ($request->custody_criterias as $custody){
+
+                $criteria = new BabysitterCustody();
+                $criteria->User_id = $user->id;
+                $criteria->criteria_id = intval($custody);
+                $criteria->save();
+            }
+        }
+
 
         // traitement du fichier
         $file = $request->file('files');

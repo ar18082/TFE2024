@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Storage;
 class HomeController extends Controller
 {
 
-//    public function __construct()
+//    pulic function __construct()
 //    {
 //        $this->middleware('auth');
 //    }
