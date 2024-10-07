@@ -45,7 +45,7 @@
 
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            @if(Auth::user())
+                            @if(Auth::user()->email_verified_at != null)
                                 @if(Auth::user()->role[0] == 'admin')
                                         <li><a class="dropdown-item" href="{{ route('dashboard.admin') }} ">Profil</a></li>
                                 @elseif(Auth::user()->role[0] == 'babysitter')
