@@ -24,6 +24,8 @@ class InscriptionController extends Controller
         $user = User::where('id', $id)->with('postal_code_localite', 'goodPlan', 'question', 'response', 'image')->first();
 
 
+
+
         return view('inscription.index', compact('user') );
     }
 
@@ -104,7 +106,7 @@ class InscriptionController extends Controller
         $user->phoneNumber = $request->phoneNumber;
         $user->addressStreet = $request->addressStreet;
         $user->addressNumber = $request->addressNumber;
-        $user->postal_code_localite_id = $request->postal_code_localite;
+        $user->postal_code_localite_id = $request->postal_code_localite[0];
         $user->save();
 
         //appelle à la fonction pour la géolocalisation
@@ -113,7 +115,11 @@ class InscriptionController extends Controller
         // check if the client has latitude and longitude for marker on the map
         if ($user->geographic_coodinates == null) {
 
+
+
             $address = $user->addressStreet. ' '. $user->addressNumber . ', ' . $user->postal_code_localite['postCode'] . ' ' . $user->postal_code_localite['localite'] . ',Bel';
+
+
 
             $coordinates = geocodeAddress($address);
 

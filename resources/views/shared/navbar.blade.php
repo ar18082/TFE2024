@@ -45,14 +45,14 @@
 
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            @if(Auth::user()->email_verified_at != null)
-                                @if(Auth::user()->role[0] == 'admin')
-                                        <li><a class="dropdown-item" href="{{ route('dashboard.admin') }} ">Profil</a></li>
-                                @elseif(Auth::user()->role[0] == 'babysitter')
-                                        <li><a class="dropdown-item" href="{{ route('dashboard.babysitter', Auth::user()->id ) }} ">Profil</a></li>
-                                @elseif(Auth::user()->role[0] == 'parent')
-                                        <li><a class="dropdown-item" href="{{ route('dashboard.parent', Auth::user()->id ) }} ">Profil</a></li>
-                                @endif
+                            @if(Auth::user())
+{{--                                @if(Auth::user()->role[0] == 'admin')--}}
+{{--                                        <li><a class="dropdown-item" href="{{ route('dashboard.admin') }} ">Profil</a></li>--}}
+{{--                                @elseif(Auth::user()->role[0] == 'babysitter')--}}
+{{--                                        <li><a class="dropdown-item" href="{{ route('dashboard.babysitter', Auth::user()->id ) }} ">Profil</a></li>--}}
+{{--                                @elseif(Auth::user()->role[0] == 'parent')--}}
+{{--                                        <li><a class="dropdown-item" href="{{ route('dashboard.parent', Auth::user()->id ) }} ">Profil</a></li>--}}
+{{--                                @endif--}}
 
 
                             <li><hr class="dropdown-divider"></li>
